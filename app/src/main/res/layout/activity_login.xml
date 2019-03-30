@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/transparent"
+    android:fitsSystemWindows="true"
+    android:paddingStart="30dp"
+    android:paddingLeft="30dp"
+    android:paddingEnd="30dp"
+    android:paddingRight="30dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/main_lin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/bottom_lin"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+
+            <android.support.v7.widget.AppCompatImageView
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="70dp"
+                android:src="@drawable/logo" />
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/welcome_text"
+                style="@style/semi_bold_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/sign_in_to_your_account"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/normal_text_size" />
+
+
+            <android.support.v7.widget.AppCompatEditText
+                android:id="@+id/email_et"
+                style="@style/normal_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_name_tv"
+                android:layout_marginTop="30dp"
+                android:digits="0123456789"
+                android:drawableStart="@drawable/ic_phone_iphone"
+                android:drawableLeft="@drawable/ic_phone_iphone"
+                android:drawablePadding="10dp"
+                android:hint="@string/mobile"
+                android:imeOptions="actionNext"
+                android:inputType="phone"
+                android:maxLines="1"
+                android:nextFocusRight="@+id/pwd_et"
+                android:nextFocusDown="@+id/pwd_et"
+                android:theme="@style/EditTextTheme"
+
+                />
+
+
+            <android.support.v7.widget.AppCompatEditText
+
+                android:id="@+id/pwd_et"
+                style="@style/normal_style"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:drawableStart="@drawable/ic_vpn_key"
+                android:drawableLeft="@drawable/ic_vpn_key"
+                android:drawablePadding="10dp"
+                android:drawableTint="@color/black"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:theme="@style/EditTextTheme" />
+
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/new_to_aligo_tv"
+                style="@style/normal_style"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="10dp"
+                android:background="?attr/selectableItemBackground"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:text="@string/forgot_pwd"
+                android:textColor="@color/black" />
+
+
+            <RelativeLayout
+                android:id="@+id/login_rel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/forgot_pwd_tv"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/dark_grey_rounded_circle_btn_bg">
+
+
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/login"
+                    style="@style/semi_bold_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:text="@string/sign_up"
+                    android:textColor="@color/white" />
+
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_lin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/do_not_have_account"
+                style="@style/normal_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:text="@string/do_not_have_an_account"
+                android:textColor="@color/black" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/sign_up_tv"
+                style="@style/black_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/sign_up"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

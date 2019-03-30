@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="normal_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/segoeui</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+
+    <style name="black_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/segui_black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+    <style name="bold_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/segoeui_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+
+    <style name="semi_bold_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/segui_semi_bold</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+    <style name="light_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/segoeui_light</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+    <style name="semi_light_style">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:fontFamily">@font/segoeui_light</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/normal_text_size</item>
+    </style>
+
+
+    <style name="EditTextTheme">
+        <item name="colorPrimary">@color/black</item>
+        <item name="colorPrimaryDark">@color/black</item>
+        <item name="colorAccent">@color/grey_text</item>
+        <item name="colorControlNormal">@color/grey_text</item>
+        <item name="colorControlActivated">@color/black</item>
+        <item name="colorControlHighlight">@color/black</item>
+        <item name="android:textColorHint">@color/grey_text</item>
+    </style>
+
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/action_bar_size"
+    android:background="@color/transparent"
+    android:contentInsetStart="@dimen/action_bar_content_padding"
+    android:contentInsetLeft="@dimen/action_bar_content_padding"
+    android:contentInsetEnd="@dimen/action_bar_content_padding"
+    android:contentInsetRight="@dimen/action_bar_content_padding"
+    local:contentInsetEnd="@dimen/action_bar_content_padding"
+    local:contentInsetLeft="@dimen/action_bar_content_padding"
+    local:contentInsetRight="@dimen/action_bar_content_padding"
+    local:contentInsetStart="@dimen/action_bar_content_padding"
+    local:layout_collapseMode="pin"
+    local:navigationIcon="@drawable/arrow_back_b"
+    local:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+    local:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/title"
+        style="@style/semi_bold_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/larger_text_size"
+        android:visibility="visible" />
+
+
+</android.support.v7.widget.Toolbar>
+
+
+    <!--<?xml version="1.0" encoding="utf-8"?>--><!--<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"--><!--xmlns:app="http://schemas.android.com/apk/res-auto"--><!--android:id="@+id/toolbar"--><!--android:layout_width="match_parent"--><!--android:layout_height="?attr/actionBarSize"--><!--android:background="@android:color/transparent"--><!--android:contentInsetStart="@dimen/action_bar_content_padding"--><!--android:contentInsetLeft="@dimen/action_bar_content_padding"--><!--android:contentInsetEnd="@dimen/action_bar_content_padding"--><!--android:contentInsetRight="@dimen/action_bar_content_padding"--><!--app:contentInsetEnd="@dimen/action_bar_content_padding"--><!--app:contentInsetLeft="@dimen/action_bar_content_padding"--><!--app:contentInsetRight="@dimen/action_bar_content_padding"--><!--app:contentInsetStart="@dimen/action_bar_content_padding"--><!--app:layout_collapseMode="pin"--><!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light">-->
+
+
+    <!--<TextView--><!--android:id="@+id/title"--><!--style="@style/generic_text_label_bold"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_gravity="center"--><!--android:layout_marginTop="@dimen/action_bar_padding_top_bottom"--><!--android:layout_marginBottom="@dimen/action_bar_padding_top_bottom"--><!--android:gravity="center_vertical|center"--><!--android:textAllCaps="true"--><!--android:textColor="@color/black"--><!--android:textSize="@dimen/generic_text_label" />-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
+

@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">AutoAds</string>
+
+    <string name="app_shared_pref">com.autoads.app.myPref</string>
+
+    <string name="google_maps_key">AIzaSyC-PYGaiBQ3R5TxVe8J_Aw4xX-Wk_Zg1hI</string>
+    <string name="google_maps_key_new">AIzaSyDgVVpvP1Gf3pfpFhnaIc66YtCtQ0dPFnc</string>
+
+    <string name="internet_connection_not_available">Internet connection not available</string>
+
+
+    <string name="sign_up">Sing Up</string>
+    <string name="logout">Logout</string>
+    <string name="welcome">Welcome</string>
+    <string name="sign_up_using_mobile_number">Sign up using mobile number</string>
+    <string name="username">User name</string>
+    <string name="email">Email</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="mobile">Mobile</string>
+    <string name="password">Password</string>
+    <string name="i_agree">I agree to Fodo\'s</string>
+    <string name="terms_of_services">Terms of services</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="and">and</string>
+    <string name="content_policy">Content Policy</string>
+    <string name="loading">Loading...</string>
+    <string name="complete_mobile">+92 301 xxxx xxx</string>
+
+    <string name="api_failed_msg">Fail to get response, please try again</string>
+    <string name="user_successfully_registered">User is successfully registered.</string>
+
+    <string name="please_enter_first_name">Please enter fist name</string>
+    <string name="please_enter_last_name">Please enter last name</string>
+
+    <string name="please_enter_valid_email_username">Please enter valid email address</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_enter_valid_mobile_number">Please enter valid mobile number</string>
+
+    <string name="sign_up_using_aligo">Sign in using your existing Fodo account</string>
+    <string name="forgot_pwd">Forgot Password?</string>
+    <string name="login">Login</string>
+    <string name="sign_in_to_your_account">Sign in to your account</string>
+    <string name="do_not_have_an_account">Don\'t have an account?</string>
+
+
+    <!--**********************Activity Verification******************-->
+    <string name="verification">Verification</string>
+    <string name="verify_your_mobile">Verify your mobile</string>
+    <string name="enter_otp_code">Enter your OTP code here</string>
+    <string name="verify_now">Verify Now</string>
+    <string name="sms_not_received">Sms not received?</string>
+    <string name="resent_code">Resend code</string>
+    <string name="please_enter_valid_pin">Please enter valid pin</string>
+
+
+
+
+</resources>

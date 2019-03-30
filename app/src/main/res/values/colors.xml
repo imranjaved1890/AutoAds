@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/white</color>
+    <color name="colorPrimaryDark">@color/white</color>
+    <color name="colorAccent">@color/black</color>
+
+    <color name="black">#000000</color>
+    <color name="ferozi_green">#60c7cb</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="green_start_clr">#56c1a8</color>
+    <color name="green_end_clr">#60c7cb</color>
+
+    <color name="grey_type">#e7ecf0</color>
+    <color name="light_grey">#e6e6e6</color>
+    <color name="lighter_grey">#f7f7f7</color>
+    <color name="dark_grey">#565555</color>
+
+    <color name="darker_grey">#28272D</color>
+    <color name="light_grey_btn">#EBE9EA</color>
+    <color name="input_bg_grey">#f4f8f7</color>
+
+    <color name="blue">#628ab2</color>
+    <color name="sky_blue">#b5e2e1</color>
+    <color name="light_green">#dbe44c</color>
+    <color name="yellow">#ffc60b</color>
+    <color name="light_pink">#fac1b8</color>
+    <color name="dark_pink">#d65d7a</color>
+    <color name="light_blue">#bfccda</color>
+    <color name="grey_text">#b1b1b1</color>
+    <color name="dark_grey_text">#919093</color>
+    <color name="placeholder_bg">#dddddd</color>
+    <color name="transparent">@android:color/transparent</color>
+    <color name="green">#008476</color>
+    <color name="home_green">#57c1aa</color>
+    <color name="home_green_trans">#ccece5</color>
+    <color name="app_green">#00ca9d</color>
+
+    <color name="orange">#FFA500</color>
+    <color name="orange_light">#ffe266</color>
+    <color name="red_new">#BA0303</color>
+    <color name="red_orange">#fe431a</color>
+
+
+    <color name="transluscent">#90000000</color>
+    <color name="transluscent_less">#30000000</color>
+
+    <color name="textColorPrimary">#FFFFFF</color>
+    <color name="windowBackground">#FFFFFF</color>
+
+
+</resources>

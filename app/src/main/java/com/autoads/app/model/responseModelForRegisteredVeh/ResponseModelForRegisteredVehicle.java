@@ -1,9 +1,11 @@
-package com.autoads.app.model;
 
+package com.autoads.app.model.responseModelForRegisteredVeh;
+
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class ResponseModelForSignUp {
+public class ResponseModelForRegisteredVehicle {
 
     @SerializedName("error")
     @Expose
@@ -11,6 +13,9 @@ public class ResponseModelForSignUp {
     @SerializedName("msg")
     @Expose
     private String msg;
+    @SerializedName("data")
+    @Expose
+    private List<DataForRegVeh> data = null;
 
     public Boolean getError() {
         return error;
@@ -27,5 +32,16 @@ public class ResponseModelForSignUp {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
+    public List<DataForRegVeh> getData() {
+        return data;
+    }
+
+    public void setData(List<DataForRegVeh> data) {
+        this.data = data;
+    }
+
+
+
 
 }

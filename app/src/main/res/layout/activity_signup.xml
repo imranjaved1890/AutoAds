@@ -117,7 +117,6 @@
 
                 <android.support.v7.widget.AppCompatEditText
                     android:id="@+id/last_name_et"
-
                     style="@style/normal_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -128,8 +127,8 @@
                     android:imeOptions="actionNext"
                     android:inputType="textCapWords"
                     android:maxLines="1"
-                    android:nextFocusRight="@+id/mobile_et"
-                    android:nextFocusDown="@+id/mobile_et"
+                    android:nextFocusRight="@+id/email_et"
+                    android:nextFocusDown="@+id/email_et"
                     android:textColorHint="@color/grey_text"
                     android:theme="@style/EditTextTheme" />
 
@@ -140,32 +139,11 @@
 
 
         <android.support.v7.widget.AppCompatEditText
-            android:id="@+id/mobile_et"
-            style="@style/normal_style"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/name_lin"
-            android:drawableStart="@drawable/ic_phone_iphone"
-            android:drawableLeft="@drawable/ic_phone_iphone"
-            android:drawablePadding="5dp"
-            android:hint="@string/complete_mobile"
-            android:imeOptions="actionNext"
-            android:inputType="phone"
-            android:maxLines="1"
-            android:nextFocusRight="@+id/pwd_et"
-            android:nextFocusDown="@+id/pwd_et"
-            android:textColorHint="@color/grey_text"
-            android:theme="@style/EditTextTheme"
-
-            />
-
-
-        <android.support.v7.widget.AppCompatEditText
             android:id="@+id/email_et"
             style="@style/normal_style"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/mobile_et"
+            android:layout_below="@+id/name_lin"
             android:layout_marginTop="10dp"
             android:drawableStart="@drawable/ic_email"
             android:drawableLeft="@drawable/ic_email"
@@ -201,6 +179,7 @@
 
 
         <RelativeLayout
+            android:id="@+id/signup_rel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/pwd_et"
@@ -220,6 +199,40 @@
 
 
         </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/bottom_lin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/signup_rel"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:gravity="bottom"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/do_not_have_account"
+                style="@style/normal_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:text="Already have account?"
+                android:textColor="@color/black" />
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/sign_in_tv"
+                style="@style/black_style"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="?attr/selectableItemBackground"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingRight="10dp"
+                android:paddingBottom="5dp"
+                android:text="@string/sign_in"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
 
 
     </RelativeLayout>

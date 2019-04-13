@@ -39,7 +39,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:gravity="center"
-                android:text="@string/sign_in_to_your_account"
+                android:text="@string/verify_mobile_number"
                 android:textAllCaps="true"
                 android:textColor="@color/black"
                 android:textSize="@dimen/normal_text_size" />
@@ -55,7 +55,7 @@
                 android:drawableStart="@drawable/ic_phone_iphone"
                 android:drawableLeft="@drawable/ic_phone_iphone"
                 android:drawablePadding="10dp"
-                android:hint="@string/mobile"
+                android:hint="@string/complete_mobile"
                 android:imeOptions="actionNext"
                 android:inputType="phone"
                 android:maxLines="1"
@@ -66,28 +66,9 @@
                 />
 
 
-            <android.support.v7.widget.AppCompatEditText
-
-                android:id="@+id/pwd_et"
-                style="@style/normal_style"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:drawableStart="@drawable/ic_vpn_key"
-                android:drawableLeft="@drawable/ic_vpn_key"
-                android:drawablePadding="10dp"
-                android:drawableTint="@color/black"
-                android:hint="@string/password"
-                android:imeOptions="actionDone"
-                android:inputType="textPassword"
-                android:maxLines="1"
-                android:theme="@style/EditTextTheme" />
-
-
             <android.support.v7.widget.AppCompatTextView
                 android:id="@+id/new_to_aligo_tv"
                 style="@style/normal_style"
-                android:visibility="gone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
@@ -96,7 +77,8 @@
                 android:paddingTop="5dp"
                 android:paddingBottom="5dp"
                 android:text="@string/forgot_pwd"
-                android:textColor="@color/black" />
+                android:textColor="@color/black"
+                android:visibility="gone" />
 
 
             <RelativeLayout
@@ -104,18 +86,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/forgot_pwd_tv"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/dark_grey_rounded_circle_btn_bg">
 
 
                 <android.support.v7.widget.AppCompatButton
-                    android:id="@+id/login"
+                    android:id="@+id/submit_btn"
                     style="@style/semi_bold_style"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
-                    android:text="@string/sign_in"
+                    android:text="@string/submit"
                     android:textColor="@color/white" />
 
 
@@ -123,57 +105,6 @@
 
 
         </LinearLayout>
-
-        <LinearLayout
-            android:layout_above="@+id/verify_now_btn"
-            android:id="@+id/bottom_lin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="10dp"
-            android:orientation="vertical">
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/do_not_have_account"
-                style="@style/normal_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:text="@string/do_not_have_an_account"
-                android:textColor="@color/black" />
-
-            <android.support.v7.widget.AppCompatTextView
-                android:id="@+id/sign_up_tv"
-                style="@style/black_style"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="?attr/selectableItemBackground"
-                android:paddingTop="5dp"
-                android:paddingEnd="10dp"
-                android:paddingRight="10dp"
-                android:paddingBottom="5dp"
-                android:text="@string/sign_up"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-
-
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/verify_now_btn"
-            style="@style/black_style"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:paddingTop="5dp"
-            android:paddingEnd="10dp"
-            android:layout_alignParentBottom="true"
-            android:paddingRight="10dp"
-            android:paddingBottom="5dp"
-            android:layout_marginBottom="10dp"
-            android:text="@string/verify_mobile_number"
-            android:textColor="@color/black" />
 
     </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

@@ -32,7 +32,37 @@
 
 
         <activity
+            android:name=".activity.UserProfileActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_no_actionbar" />
+
+        <activity
+            android:name=".activity.RegVehicleActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_no_actionbar" />
+
+        <activity
+            android:name=".activity.UserRegVehicleActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_no_actionbar" />
+
+        <activity
+            android:name=".activity.DashboardActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_no_actionbar" />
+
+        <activity
             android:name=".activity.SignUpActivity"
+            android:label=""
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme_no_actionbar" />
+
+        <activity
+            android:name=".activity.VerifyMobileActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_no_actionbar" />
@@ -45,13 +75,6 @@
 
         <activity
             android:name=".activity.PinVerificationActivity"
-            android:label=""
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme_no_actionbar" />
-
-
-        <activity
-            android:name=".activity.ProfileActivity"
             android:label=""
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme_no_actionbar" />

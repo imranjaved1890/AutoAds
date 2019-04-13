@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.autoads.app.R;
+import com.autoads.app.model.ResponseModelForUserLogin;
 import com.autoads.app.preferences.MyPreferences;
 import com.autoads.app.retrofit.APIClient;
 import com.autoads.app.retrofit.APIInterface;
@@ -19,19 +20,23 @@ import com.autoads.app.util.MyUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.email_et)
-    AppCompatEditText emailEt;
+    @BindView(R.id.mobile_et)
+    AppCompatEditText mobileEt;
 
     @BindView(R.id.pwd_et)
     AppCompatEditText pwdEt;
 
-
     @BindView(R.id.sign_up_tv)
     AppCompatTextView signUpTv;
 
+    @BindView(R.id.verify_now_btn)
+    AppCompatTextView verify_now_btn;
 
     @BindView(R.id.login)
     AppCompatButton loginBtn;
@@ -59,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void setListener() {
         loginBtn.setOnClickListener(this);
         signUpTv.setOnClickListener(this);
+        verify_now_btn.setOnClickListener(this);
     }
 
     @Override
@@ -68,22 +74,26 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 Intent singUpIntent = new Intent(LoginActivity.this, SignUpActivity.class);
                 startActivity(singUpIntent);
                 break;
+            case R.id.verify_now_btn:
+
+                Intent intent = new Intent(LoginActivity.this, VerifyMobileActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
+
+
+                break;
             case R.id.login:
                 if (MyUtil.isNetworkAvailable(LoginActivity.this)) {
                     if (validateFields()) {
 
-                        Intent intent = new Intent(LoginActivity.this, ProfileActivity.class);
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        startActivity(intent);
-                        finish();
-
-
-//                        doLogin(emailEt.getText().toString(), pwdEt.getText().toString());
+                        doLogin(mobileEt.getText().toString(), pwdEt.getText().toString());
                     }
                 } else {
                     Toast.makeText(this, getResources().getString(R.string.internet_connection_not_available), Toast.LENGTH_SHORT).show();
                 }
                 break;
+
 
         }
 
@@ -91,118 +101,61 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     private boolean validateFields() {
 
-        if (emailEt.getText().toString().isEmpty()) {
-            emailEt.setError(getResources().getString(R.string.please_enter_valid_email_username));
+        if (mobileEt.getText().toString().isEmpty()) {
+            mobileEt.setError(getResources().getString(R.string.please_enter_valid_mobile_number));
             return false;
         } else if (pwdEt.getText().toString().isEmpty()) {
             pwdEt.setError(getResources().getString(R.string.please_enter_password));
             return false;
         }
-        emailEt.setError(null);
+        mobileEt.setError(null);
         pwdEt.setError(null);
 
         return true;
     }
 
-//    private void doLogin(String emailStr, String pwdStr) {
-//        myDialog.show();
-//        myDialog.setMessage(getResources().getString(R.string.loading)); // always call after myDialog.show();
-//
-//        Call<SignUpLoginResponseModel> call = apiInterface.doLogin(emailStr, pwdStr);
-//        call.enqueue(new Callback<SignUpLoginResponseModel>() {
-//            @Override
-//            public void onResponse(Call<SignUpLoginResponseModel> call, Response<SignUpLoginResponseModel> response) {
-//
-//                myDialog.dismiss();
-//
-//                if (response != null) {
-//                    SignUpLoginResponseModel signUpResponseModel = response.body();
-//                    if (signUpResponseModel.getSuccess()) {
-//                        myPreferences.setUserId(signUpResponseModel.getData().getId());
-//                        myPreferences.setOtpCode(signUpResponseModel.getData().getOtpCode() + "");
-//                        myPreferences.setUserName(signUpResponseModel.getData().getUsername() + "");
-//                        myPreferences.setOtpStatus(signUpResponseModel.getData().getOtpStatus());
-//                        myPreferences.setLoggedIn(true);
-//                        myPreferences.setCustomerLogin(true);
-//
-//                        Intent intent;
-//                        if (signUpResponseModel.getData().getOtpStatus() == 0) {
-////                            intent = new Intent(LoginActivity.this, PinVerificationActivity.class);
-////                            startActivity(intent);
-//                            verifyPin(myPreferences.getUserName(), signUpResponseModel.getData().getOtpCode()+"" );
-//                        } else {
-////                            if(myPreferences.getUserSelectedLat().equals("0.0") || myPreferences.getUserSelectedLng().equals("0.0")){
-//                            intent = new Intent(LoginActivity.this, SelectLocationModeActivity.class);
-////                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                            startActivity(intent);
-//                            finish();
-////                            }
-//
-//                        }
-//
-//
-//                    } else {
-//                        MyUtil.showAlertDialog(LoginActivity.this, "", signUpResponseModel.getData().getMessage(), getResources().getString(R.string.ok), "");
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<SignUpLoginResponseModel> call, Throwable t) {
-//                call.cancel();
-//                MyUtil.showLog("Error", t.getMessage() + "");
-//                myDialog.dismiss();
-//                Toast.makeText(LoginActivity.this, getResources().getString(R.string.api_failed_msg), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+    private void doLogin(String mobileStr, String pwdStr) {
+        myDialog.show();
+        myDialog.setMessage(getResources().getString(R.string.loading)); // always call after myDialog.show();
+
+        Call<ResponseModelForUserLogin> call = apiInterface.doLogin(1, mobileStr, pwdStr);
+        call.enqueue(new Callback<ResponseModelForUserLogin>() {
+            @Override
+            public void onResponse(Call<ResponseModelForUserLogin> call, Response<ResponseModelForUserLogin> response) {
+
+                myDialog.dismiss();
+
+                if (response != null) {
+                    ResponseModelForUserLogin signUpResponseModel = response.body();
+                    if (signUpResponseModel.getError()) {
+                        Toast.makeText(LoginActivity.this, "Could not sign in, Please recheck your credentials.", Toast.LENGTH_SHORT).show();
+                    } else {
+
+                        myPreferences.setUserId(Integer.parseInt(signUpResponseModel.getData().getId()));
+                        myPreferences.setUserPhone(signUpResponseModel.getData().getMobile() + "");
+                        myPreferences.setUserEmail(signUpResponseModel.getData().getEmail() + "");
+
+                        myPreferences.setLoggedIn(true);
+
+                        Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        finish();
 
 
-//    private void verifyPin(String userNameStr, String pinStr) {
-//        myDialog.show();
-//        myDialog.setMessage(getResources().getString(R.string.loading)); // always call after myDialog.show();
-//
-//        Call<SignUpLoginResponseModel> call = apiInterface.verifyPin(userNameStr, pinStr);
-//        call.enqueue(new Callback<SignUpLoginResponseModel>() {
-//            @Override
-//            public void onResponse(Call<SignUpLoginResponseModel> call, Response<SignUpLoginResponseModel> response) {
-//
-//                myDialog.dismiss();
-//
-//                if (response != null) {
-//                    SignUpLoginResponseModel signUpResponseModel = response.body();
-//                    if (signUpResponseModel.getSuccess()) {
-//
-//                        myPreferences.setOtpStatus(signUpResponseModel.getData().getOtpStatus());
-//
-//                        Intent intent;
-////                        if (signUpResponseModel.getData().getOtpStatus() == 0) {
-////                            intent = new Intent(LoginActivity.this, PinVerificationActivity.class);
-////                        } else {
-////                            intent = new Intent(LoginActivity.this, SelectLocationModeActivity.class);
-////
-////                        }
-//                        intent = new Intent(LoginActivity.this, SelectLocationModeActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        startActivity(intent);
-//                        finish();
-//
-//
-//                    } else {
-//                        MyUtil.showAlertDialog(LoginActivity.this, "", signUpResponseModel.getData().getMessage(), getResources().getString(R.string.ok), "");
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<SignUpLoginResponseModel> call, Throwable t) {
-//                call.cancel();
-//                MyUtil.showLog("Error", t.getMessage() + "");
-//                myDialog.dismiss();
-//                Toast.makeText(LoginActivity.this, getResources().getString(R.string.api_failed_msg), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseModelForUserLogin> call, Throwable t) {
+                call.cancel();
+                MyUtil.showLog("Error", t.getMessage() + "");
+                myDialog.dismiss();
+                Toast.makeText(LoginActivity.this, getResources().getString(R.string.api_failed_msg), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
 }

@@ -17,12 +17,14 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.autoads.app.R;
+import com.autoads.app.constants.AppConstants;
 import com.autoads.app.preferences.MyPreferences;
 import com.autoads.app.retrofit.APIClient;
 import com.autoads.app.retrofit.APIInterface;
 import com.autoads.app.util.MyDialog;
 import com.autoads.app.util.MyUtil;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.TaskExecutors;
 import com.google.firebase.FirebaseException;
@@ -53,18 +55,15 @@ public class PinVerificationActivity extends AppCompatActivity implements View.O
     @BindView(R.id.pin_one)
     AppCompatEditText pinCodeEt;
 
-
     @BindView(R.id.verify_now_btn)
     AppCompatButton verifyNowBtn;
 
-
     private MyPreferences myPreferences;
-    private APIInterface apiInterface;
-    private MyDialog myDialog;
 
 
     private String verificationId;
     private FirebaseAuth mAuth;
+    private String phoneNumber;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -72,20 +71,16 @@ public class PinVerificationActivity extends AppCompatActivity implements View.O
         setContentView(R.layout.activity_pin_verification);
         ButterKnife.bind(this);
 
+        myPreferences = new MyPreferences(PinVerificationActivity.this);
+
         setUpToolbar();
         init();
         setListener();
 
-        apiInterface = APIClient.getClient().create(APIInterface.class);
-        myDialog = new MyDialog(PinVerificationActivity.this);
-        myPreferences = new MyPreferences(PinVerificationActivity.this);
+        phoneNumber = getIntent().getStringExtra(AppConstants.KEY_PHONE);
 
-
-        String phonenumber = getIntent().getStringExtra("phonenumber");
-
-        Log.e("phonenumber", phonenumber + "");
-        sendVerificationCode(phonenumber);
-
+        MyUtil.showLog(AppConstants.KEY_PHONE, phoneNumber + "");
+        sendVerificationCode(phoneNumber);
 
     }
 
@@ -97,19 +92,34 @@ public class PinVerificationActivity extends AppCompatActivity implements View.O
 
     private void signInWithCredential(PhoneAuthCredential credential) {
         mAuth.signInWithCredential(credential)
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(PinVerificationActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                })
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            Intent intent = new Intent(PinVerificationActivity.this, ProfileActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(intent);
-                            finish();
+                            if (getIntent().hasExtra(AppConstants.KEY_PHONE)) {
+                                if (!getIntent().getStringExtra(AppConstants.KEY_PHONE).equals("")) {
+                                    myPreferences.setUserPhone(phoneNumber);
+                                    myPreferences.setMobileVerified(true);
+
+                                    Intent intent = new Intent(PinVerificationActivity.this, SignUpActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    startActivity(intent);
+                                    finish();
+
+                                }
+                            }
+
 
                         } else {
                             Toast.makeText(PinVerificationActivity.this, task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                            Log.e("msg", task.getException().getMessage() + "");
+                            MyUtil.showLog("msg", task.getException().getMessage() + "");
                         }
                     }
                 });
@@ -149,7 +159,7 @@ public class PinVerificationActivity extends AppCompatActivity implements View.O
         @Override
         public void onVerificationFailed(FirebaseException e) {
             Toast.makeText(PinVerificationActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-            Log.e("msg", e.getMessage() + "");
+            MyUtil.showLog("msg", e.getMessage() + "");
         }
     };
 
@@ -215,7 +225,6 @@ public class PinVerificationActivity extends AppCompatActivity implements View.O
                 }
                 break;
         }
-
     }
 
     private boolean validateFields() {
@@ -227,51 +236,5 @@ public class PinVerificationActivity extends AppCompatActivity implements View.O
 
         return true;
     }
-
-//    private void verifyPin(String userNameStr, String pinStr) {
-//        myDialog.show();
-//        myDialog.setMessage(getResources().getString(R.string.loading)); // always call after myDialog.show();
-//
-//        Call<SignUpLoginResponseModel> call = apiInterface.verifyPin(userNameStr, pinStr);
-//        call.enqueue(new Callback<SignUpLoginResponseModel>() {
-//            @Override
-//            public void onResponse(Call<SignUpLoginResponseModel> call, Response<SignUpLoginResponseModel> response) {
-//
-//                myDialog.dismiss();
-//
-//                if (response != null) {
-//                    SignUpLoginResponseModel signUpResponseModel = response.body();
-//                    if (signUpResponseModel.getSuccess()) {
-//
-//                        myPreferences.setOtpStatus(signUpResponseModel.getData().getOtpStatus());
-//
-//                        Intent intent;
-//                        if (signUpResponseModel.getData().getOtpStatus() == 0) {
-//                            intent = new Intent(PinVerificationActivity.this, PinVerificationActivity.class);
-//                        } else {
-//                            intent = new Intent(PinVerificationActivity.this, SelectLocationModeActivity.class);
-//
-//                        }
-//
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        startActivity(intent);
-//                        finish();
-//
-//
-//                    } else {
-//                        MyUtil.showAlertDialog(PinVerificationActivity.this, "", signUpResponseModel.getData().getMessage(), getResources().getString(R.string.ok), "");
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<SignUpLoginResponseModel> call, Throwable t) {
-//                call.cancel();
-//                MyUtil.showLog("Error", t.getMessage() + "");
-//                myDialog.dismiss();
-//                Toast.makeText(PinVerificationActivity.this, getResources().getString(R.string.api_failed_msg), Toast.LENGTH_SHORT).show();
-//            }
-//        });
-//    }
 
 }

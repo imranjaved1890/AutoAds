@@ -33,7 +33,20 @@ public class SplashActivity extends AppCompatActivity {
         runnable = new Runnable() {
             @Override
             public void run() {
-                Intent  intent = new Intent(SplashActivity.this, LoginActivity.class);
+
+                Intent intent = null;
+
+                if (myPreferences.isLoggedIn()) {
+                    intent = new Intent(SplashActivity.this, DashboardActivity.class);
+                } else {
+                    if(myPreferences.isMobileVerified()){
+                        intent = new Intent(SplashActivity.this, LoginActivity.class);
+                    }else {
+                        intent = new Intent(SplashActivity.this, VerifyMobileActivity.class);
+                    }
+
+                }
+
                 startActivity(intent);
                 finish();
             }

@@ -141,8 +141,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                         finish();
-
-
                     }
                 }
             }

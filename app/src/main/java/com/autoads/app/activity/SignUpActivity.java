@@ -47,7 +47,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
     @BindView(R.id.email_et)
     AppCompatEditText emailEt;
 
-
     @BindView(R.id.pwd_et)
     AppCompatEditText pwdEt;
 
@@ -67,7 +66,6 @@ public class SignUpActivity extends AppCompatActivity implements View.OnClickLis
         apiInterface = APIClient.getClient().create(APIInterface.class);
         myDialog = new MyDialog(SignUpActivity.this);
         myPreferences = new MyPreferences(SignUpActivity.this);
-
 
         setListener();
         setUpToolbar();
